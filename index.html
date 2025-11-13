@@ -5,69 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARtPUT: Autonomous Rover to Pick Up Trash</title>
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f7f9fc;
-            color: #222;
+        :root {
+            --primary: #1f3c88;
+            --secondary: #355bb5;
+            --light-bg: #f7f9fc;
+            --text-dark: #222;
+            --white: #ffffff;
         }
 
-        /* Navigation Bar */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
         .navbar {
             display: flex;
             align-items: center;
-            background: #1f3c88;
-            padding: 0 20px;
+            justify-content: space-between;
+            background: var(--primary);
+            padding: 0.75rem 2rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .navbar .logo {
-            font-size: 20px;
-            font-weight: bold;
-            color: #fff;
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--white);
             text-decoration: none;
-            padding: 16px 18px;
-            margin-right: 20px;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
         }
 
-        .navbar a, .dropdown-btn {
-            color: #fff;
-            padding: 16px 18px;
-            text-decoration: none;
-            font-size: 16px;
+        .logo:hover {
+            color: #a7c4ff;
         }
 
-        .navbar a:hover, .dropdown:hover .dropdown-btn {
-            background: #355bb5;
-        }
-
-        .dropdown {
+        .nav-links, .dropdown {
             position: relative;
         }
 
-        /* Dropdown Menu */
+        .nav-links a, .dropdown-btn {
+            color: var(--white);
+            text-decoration: none;
+            padding: 10px 14px;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: background 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .dropdown:hover .dropdown-btn {
+            background: var(--secondary);
+        }
+
+        /* DROPDOWN MENU */
         .dropdown-content {
             display: none;
             position: absolute;
-            background: #fff;
-            min-width: 200px;
-            border-radius: 6px;
+            background: var(--white);
+            min-width: 220px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-            animation: fadeIn 0.2s ease-in-out;
-            z-index: 50;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+            top: 45px;
+            animation: fadeIn 0.25s ease-in-out;
         }
 
         .dropdown-content a {
-            color: #333;
+            color: var(--text-dark);
             padding: 12px 16px;
-            text-decoration: none;
             display: block;
+            text-decoration: none;
             transition: 0.2s;
         }
 
         .dropdown-content a:hover {
-            background: #e8eefc;
+            background: #eef3ff;
         }
 
         .dropdown:hover .dropdown-content {
@@ -75,102 +101,146 @@
         }
 
         @keyframes fadeIn {
-            from {opacity: 0; transform: translateY(5px);}
-            to {opacity: 1; transform: translateY(0);}
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Header */
+        /* HERO SECTION */
         header {
+            background: linear-gradient(135deg, #1f3c88 0%, #355bb5 100%);
+            color: var(--white);
             text-align: center;
-            padding: 60px 20px;
-            background: #1f3c88;
-            color: white;
+            padding: 100px 20px 80px;
         }
 
         header h1 {
-            margin-bottom: 10px;
-            font-size: 38px;
+            font-size: 42px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
         }
 
         header p {
             font-size: 18px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        /* Main Content */
+        /* MAIN CONTENT */
         .container {
-            max-width: 900px;
-            margin: 60px auto;
-            background: white;
-            padding: 50px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            max-width: 950px;
+            margin: 80px auto;
+            background: var(--white);
+            padding: 60px 50px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.07);
             text-align: center;
         }
 
+        .container h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .container p {
+            font-size: 17px;
+            color: #444;
+        }
+
+        /* FOOTER */
         footer {
             text-align: center;
-            padding: 20px;
-            background: #1f3c88;
-            color: white;
-            margin-top: 60px;
-            font-size: 14px;
+            padding: 30px;
+            background: var(--primary);
+            color: var(--white);
+            margin-top: 100px;
+            font-size: 15px;
+        }
+
+        footer a {
+            color: #a7c4ff;
+            text-decoration: none;
+            margin-left: 6px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-left {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            header h1 {
+                font-size: 32px;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- Navigation Bar -->
-<div class="navbar">
-    <a class="logo" href="#">ARtPUT</a>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-left">
+        <a class="logo" href="#">ARtPUT</a>
 
-    <div class="dropdown">
-        <button class="dropdown-btn">Article Summaries ▼</button>
-        <div class="dropdown-content">
-            <a href="pdfs/Article%20Summary%201.pdf" target="_blank">Article Summary 1</a>
-            <a href="pdfs/Article%20Summary%202.pdf" target="_blank">Article Summary 2</a>
-            <a href="pdfs/Article%20Summary%203.pdf" target="_blank">Article Summary 3</a>
+        <div class="dropdown">
+            <span class="dropdown-btn">Article Summaries ▼</span>
+            <div class="dropdown-content">
+                <a href="pdfs/Article%20Summary%201.pdf" target="_blank">Article Summary 1</a>
+                <a href="pdfs/Article%20Summary%202.pdf" target="_blank">Article Summary 2</a>
+                <a href="pdfs/Article%20Summary%203.pdf" target="_blank">Article Summary 3</a>
+            </div>
+        </div>
+
+        <a href="#">Progress Reports</a>
+
+        <div class="dropdown">
+            <span class="dropdown-btn">Experimental Design ▼</span>
+            <div class="dropdown-content">
+                <a href="pdfs/Experimental%20Design.pdf" target="_blank">Experimental Design</a>
+            </div>
+        </div>
+
+        <a href="#">Media</a>
+        <a href="#">Deliverables</a>
+
+        <div class="dropdown">
+            <span class="dropdown-btn">About Us ▼</span>
+            <div class="dropdown-content">
+                <a href="#">Team Members</a>
+                <a href="#">Contact Info</a>
+            </div>
         </div>
     </div>
+</nav>
 
-    <a href="#">Progress Reports</a>
-
-    <div class="dropdown">
-        <button class="dropdown-btn">Experimental Design ▼</button>
-        <div class="dropdown-content">
-            <a href="pdfs/Experimental%20Design.pdf" target="_blank">Experimental Design</a>
-        </div>
-    </div>
-
-    <a href="#">Media</a>
-    <a href="#">Deliverables</a>
-
-    <div class="dropdown">
-        <button class="dropdown-btn">About Us ▼</button>
-        <div class="dropdown-content">
-            <a href="#">Team Members</a>
-            <a href="#">Contact Info</a>
-        </div>
-    </div>
-</div>
-
-<!-- Header -->
+<!-- HERO SECTION -->
 <header>
     <h1>ARtPUT: Autonomous Rover to Pick Up Trash</h1>
-    <p>Explore summaries, progress updates, results, and team info.</p>
+    <p>Innovating sustainable solutions through robotics — combining automation and environmental care to make our world cleaner.</p>
 </header>
 
-<!-- Main Content -->
+<!-- MAIN CONTENT -->
 <div class="container">
     <h2>Welcome to ARtPUT</h2>
     <p>
-        ARtPUT is a robotics project focused on autonomous trash collection in public parks and outdoor spaces. 
-        Our goal is to improve environmental cleanliness and reduce the need for human labor in hazardous or
-        repetitive cleanup tasks.
+        ARtPUT is a robotics project dedicated to developing an autonomous rover that can identify, collect, and dispose of litter in public environments. 
+        Our goal is to improve environmental cleanliness and reduce human workload in repetitive or hazardous cleanup operations.
     </p>
 </div>
 
+<!-- FOOTER -->
 <footer>
-    © 2025 ARtPUT
+    © 2025 ARtPUT — Autonomous Rover to Pick Up Trash |
+    <a href="https://github.com/YOUR_USERNAME/ARtPUT-Website" target="_blank">View on GitHub</a>
 </footer>
 
 </body>
