@@ -22,6 +22,94 @@
       line-height: 1.6;
     }
 
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--secondary);
+      padding: 0.75rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: 0.3s;
+    }
+
+    .logo:hover {
+      color: var(--primary);
+    }
+
+    .dropdown, .nav-item {
+      position: relative;
+    }
+
+    .dropdown-btn, .nav-item a {
+      color: var(--white);
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.3s, color 0.3s;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .dropdown-btn:hover, .nav-item a:hover,
+    .dropdown:focus-within .dropdown-btn {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    /* DROPDOWN MENU */
+    .dropdown-content {
+      position: absolute;
+      background: var(--white);
+      min-width: 220px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+      top: 45px;
+      left: 0;
+      display: none;
+      flex-direction: column;
+      z-index: 99;
+    }
+
+    .dropdown-content a {
+      color: var(--secondary);
+      padding: 12px 16px;
+      display: block;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .dropdown-content a:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
+      display: flex;
+    }
+
+    /* HEADER */
     header {
       background: linear-gradient(120deg, #2a9d8f, #48cae4);
       color: var(--white);
@@ -40,13 +128,14 @@
       margin: 0 auto;
     }
 
+    /* TEAM SECTION */
     .container {
       max-width: 1000px;
       margin: 60px auto;
       background: var(--white);
       padding: 60px;
       border-radius: 20px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
     }
 
     .team {
@@ -62,14 +151,14 @@
       padding: 25px;
       border-radius: 15px;
       width: 280px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .member:hover {
       transform: translateY(-6px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     }
 
     .member img {
@@ -127,18 +216,55 @@
 </head>
 <body>
 
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-left">
+    <a class="logo" href="index.html">ARtPUT</a>
+
+    <div class="dropdown" tabindex="0">
+      <span class="dropdown-btn">Article Summaries ▼</span>
+      <div class="dropdown-content">
+        <a href="pdfs/Article%20Summary%201.pdf" target="_blank">Article Summary 1</a>
+        <a href="pdfs/Article%20Summary%202.pdf" target="_blank">Article Summary 2</a>
+        <a href="pdfs/Article%20Summary%203.pdf" target="_blank">Article Summary 3</a>
+      </div>
+    </div>
+
+    <div class="nav-item"><a href="#">Progress Reports</a></div>
+
+    <div class="dropdown" tabindex="0">
+      <span class="dropdown-btn">Experimental Design ▼</span>
+      <div class="dropdown-content">
+        <a href="pdfs/Experimental%20Design.pdf" target="_blank">Experimental Design</a>
+      </div>
+    </div>
+
+    <div class="nav-item"><a href="#">Media</a></div>
+    <div class="nav-item"><a href="#">Deliverables</a></div>
+
+    <div class="dropdown" tabindex="0">
+      <span class="dropdown-btn">About Us ▼</span>
+      <div class="dropdown-content">
+        <a href="about.html">Team Members</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
 <header>
   <h1>Meet the ARtPUT Team</h1>
   <p>The dedicated innovators behind the Autonomous Rover to Pick Up Trash project.</p>
 </header>
 
+<!-- TEAM BIOS -->
 <div class="container">
   <div class="team">
 
     <div class="member">
       <img src="https://via.placeholder.com/120" alt="Team Member 1">
       <h3>Brendan Amoah-Daniels</h3>
-      <p>My name is Brendan Amoah-Daniels, and I'm a junior at the Governor’s School at Innovation Park. I'm passionate about engineering, coding, and aircraft. In this project, we will focus on how exploring autonomous drones can improve safety in our environment. What I enjoy most about the Governor’s School is the environment. Everyone is helpful and driven. It makes learning feel challenging in a good way.</p>
+      <p>Hello, my name is Brendan Amoah-Daniels, and I'm a junior at the Governor’s School at Innovation Park. I'm passionate about engineering, coding, and aircraft. In this project, we will focus on how exploring autonomous drones can improve safety in our environment. What I enjoy most about the Governor’s School is the environment. Everyone is helpful and driven. It makes learning feel challenging in a good way.</p>
     </div>
 
     <div class="member">
@@ -164,4 +290,3 @@
 
 </body>
 </html>
-
