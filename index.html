@@ -6,17 +6,18 @@
     <title>ARtPUT: Autonomous Rover to Pick Up Trash</title>
     <style>
         :root {
-            --primary: #1f3c88;
-            --secondary: #355bb5;
-            --light-bg: #f7f9fc;
-            --text-dark: #222;
+            --primary: #2a9d8f;
+            --secondary: #264653;
+            --accent: #e9c46a;
+            --light: #f4f9f9;
             --white: #ffffff;
+            --text-dark: #222;
         }
 
         body {
             margin: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: var(--light-bg);
+            font-family: "Poppins", "Segoe UI", sans-serif;
+            background: var(--light);
             color: var(--text-dark);
             line-height: 1.6;
         }
@@ -26,49 +27,49 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: var(--primary);
+            background: var(--secondary);
             padding: 0.75rem 2rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
         .nav-left {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .logo {
             font-size: 22px;
             font-weight: 700;
-            color: var(--white);
+            color: var(--accent);
             text-decoration: none;
             letter-spacing: 0.5px;
             transition: 0.3s;
         }
 
         .logo:hover {
-            color: #a7c4ff;
+            color: var(--primary);
         }
 
-        .nav-links, .dropdown {
+        .dropdown, .nav-item {
             position: relative;
         }
 
-        .nav-links a, .dropdown-btn {
+        .dropdown-btn, .nav-item a {
             color: var(--white);
             text-decoration: none;
             padding: 10px 14px;
-            font-weight: 500;
             border-radius: 8px;
-            transition: background 0.3s ease, color 0.3s ease;
-            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s, color 0.3s;
         }
 
-        .nav-links a:hover, .dropdown:hover .dropdown-btn {
-            background: var(--secondary);
+        .dropdown-btn:hover, .nav-item a:hover {
+            background: var(--primary);
+            color: var(--white);
         }
 
         /* DROPDOWN MENU */
@@ -79,21 +80,22 @@
             min-width: 220px;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.1);
             top: 45px;
             animation: fadeIn 0.25s ease-in-out;
         }
 
         .dropdown-content a {
-            color: var(--text-dark);
+            color: var(--secondary);
             padding: 12px 16px;
             display: block;
             text-decoration: none;
-            transition: 0.2s;
+            transition: background 0.2s;
         }
 
         .dropdown-content a:hover {
-            background: #eef3ff;
+            background: var(--primary);
+            color: var(--white);
         }
 
         .dropdown:hover .dropdown-content {
@@ -107,10 +109,10 @@
 
         /* HERO SECTION */
         header {
-            background: linear-gradient(135deg, #1f3c88 0%, #355bb5 100%);
+            background: linear-gradient(120deg, #2a9d8f, #48cae4);
             color: var(--white);
             text-align: center;
-            padding: 100px 20px 80px;
+            padding: 90px 20px 80px;
         }
 
         header h1 {
@@ -121,26 +123,26 @@
 
         header p {
             font-size: 18px;
-            opacity: 0.9;
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto;
+            opacity: 0.95;
         }
 
         /* MAIN CONTENT */
         .container {
-            max-width: 950px;
-            margin: 80px auto;
+            max-width: 900px;
+            margin: 70px auto;
             background: var(--white);
             padding: 60px 50px;
-            border-radius: 16px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+            border-radius: 20px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.07);
             text-align: center;
         }
 
         .container h2 {
             font-size: 28px;
             margin-bottom: 20px;
-            color: var(--primary);
+            color: var(--secondary);
         }
 
         .container p {
@@ -148,18 +150,35 @@
             color: #444;
         }
 
+        /* BUTTON STYLE (for future use) */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: var(--secondary);
+        }
+
         /* FOOTER */
         footer {
             text-align: center;
             padding: 30px;
-            background: var(--primary);
+            background: var(--secondary);
             color: var(--white);
             margin-top: 100px;
             font-size: 15px;
         }
 
         footer a {
-            color: #a7c4ff;
+            color: var(--accent);
             text-decoration: none;
             margin-left: 6px;
         }
@@ -173,9 +192,12 @@
             .navbar {
                 flex-direction: column;
                 align-items: flex-start;
+                padding: 1rem;
             }
             .nav-left {
                 flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
                 gap: 1rem;
             }
             header h1 {
@@ -200,7 +222,7 @@
             </div>
         </div>
 
-        <a href="#">Progress Reports</a>
+        <div class="nav-item"><a href="#">Progress Reports</a></div>
 
         <div class="dropdown">
             <span class="dropdown-btn">Experimental Design ▼</span>
@@ -209,8 +231,8 @@
             </div>
         </div>
 
-        <a href="#">Media</a>
-        <a href="#">Deliverables</a>
+        <div class="nav-item"><a href="#">Media</a></div>
+        <div class="nav-item"><a href="#">Deliverables</a></div>
 
         <div class="dropdown">
             <span class="dropdown-btn">About Us ▼</span>
@@ -225,16 +247,17 @@
 <!-- HERO SECTION -->
 <header>
     <h1>ARtPUT: Autonomous Rover to Pick Up Trash</h1>
-    <p>Innovating sustainable solutions through robotics — combining automation and environmental care to make our world cleaner.</p>
+    <p>Building a sustainable future through automation — an autonomous rover designed to clean our planet, one piece of trash at a time.</p>
 </header>
 
 <!-- MAIN CONTENT -->
 <div class="container">
     <h2>Welcome to ARtPUT</h2>
     <p>
-        ARtPUT is a robotics project dedicated to developing an autonomous rover that can identify, collect, and dispose of litter in public environments. 
-        Our goal is to improve environmental cleanliness and reduce human workload in repetitive or hazardous cleanup operations.
+        ARtPUT is a robotics initiative committed to leveraging autonomous technology to improve environmental cleanliness. 
+        Our rover detects, collects, and removes trash in outdoor spaces, showcasing how engineering can make a meaningful ecological impact.
     </p>
+    <a href="pdfs/Experimental%20Design.pdf" class="btn" target="_blank">View Experimental Design</a>
 </div>
 
 <!-- FOOTER -->
