@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | ARtPUT</title>
+  <style>
+    :root {
+      --primary: #2a9d8f;
+      --secondary: #264653;
+      --accent: #e9c46a;
+      --light: #f4f9f9;
+      --white: #ffffff;
+      --text-dark: #222;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", "Segoe UI", sans-serif;
+      background: var(--light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(120deg, #2a9d8f, #48cae4);
+      color: var(--white);
+      text-align: center;
+      padding: 90px 20px 80px;
+    }
+
+    header h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 60px auto;
+      background: var(--white);
+      padding: 60px;
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+    }
+
+    .team {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .member {
+      background: var(--light);
+      padding: 25px;
+      border-radius: 15px;
+      width: 280px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .member:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
+
+    .member img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid var(--primary);
+    }
+
+    .member h3 {
+      color: var(--secondary);
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .member p {
+      font-size: 15px;
+      color: #444;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 40px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: var(--secondary);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: var(--secondary);
+      color: var(--white);
+      margin-top: 100px;
+      font-size: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .team {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Meet the ARtPUT Team</h1>
+  <p>The dedicated innovators behind the Autonomous Rover to Pick Up Trash project.</p>
+</header>
+
+<div class="container">
+  <div class="team">
+
+    <div class="member">
+      <img src="https://via.placeholder.com/120" alt="Team Member 1">
+      <h3>Brendan Amoah-Daniels</h3>
+      <p>Lead Engineer — Focuses on robotics design, navigation algorithms, and rover mechanics to ensure smooth autonomous movement.</p>
+    </div>
+
+    <div class="member">
+      <img src="https://via.placeholder.com/120" alt="Team Member 2">
+      <h3>Dylan Shattan</h3>
+      <p>Hello, I am Dylan Shattan, a student at the Governor’s School at Innovation Park. I am happy to be a member of this program, which has challenged me and pushed me further, bringing me closer to success. I am a student-athlete, doing both football and wrestling at Osbourn Park High School. I am also involved in many other extracurricular activities, including serving as the elected leader of my Boy Scout troop, which has made me deeply care for the environment. Because of that, I want to embark on a project to help protect it.</p>
+    </div>
+
+    <div class="member">
+      <img src="https://via.placeholder.com/120" alt="Team Member 3">
+      <h3>Bokre Samson</h3>
+      <p>Hello, my name is Bokre Samson. I am honored to represent the Governor’s School at Innovation Park by doing this project, as this program has allowed me to learn so much in such a short period of time. Besides attending the Governor’s School, I am the Operations Officer of my base school’s NJROTC unit, as well as the Color Guard Commander. I also play varsity basketball for Osbourn Park. I look forward to working to make the environment a better place by building ARtPUT!</p>
+    </div>
+
+  </div>
+
+  <a href="index.html" class="btn">← Back to Home</a>
+</div>
+
+<footer>
+  © 2025 ARtPUT — Autonomous Rover to Pick Up Trash
+</footer>
+
+</body>
+</html>
