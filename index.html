@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARtPUT: Autonomous Rover to Pick Up Trash</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f9fc;
+            color: #222;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background: #1f3c88;
+            padding: 0 20px;
+        }
+
+        .navbar .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 18px;
+            margin-right: 20px;
+            letter-spacing: 1px;
+        }
+
+        .navbar a, .dropdown-btn {
+            color: #fff;
+            padding: 16px 18px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .navbar a:hover, .dropdown:hover .dropdown-btn {
+            background: #355bb5;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #fff;
+            min-width: 200px;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+            animation: fadeIn 0.2s ease-in-out;
+            z-index: 50;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background: #e8eefc;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(5px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: #1f3c88;
+            color: white;
+        }
+        header h1 {
+            margin-bottom: 10px;
+            font-size: 38px;
+        }
+        header p {
+            font-size: 18px;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1f3c88;
+            color: white;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <!-- Stylized Logo Home Button -->
+    <a class="logo" href="#">ARtPUT</a>
+
+    <div class="dropdown">
+        <button class="dropdown-btn">Article Summaries ▼</button>
+        <div class="dropdown-content">
+            <a href="Article Summary 1.pdf" target="_blank">Article Summary 1</a>
+            <a href="Article Summary 2.pdf" target="_blank">Article Summary 2</a>
+            <a href="Article Summary 3.pdf" target="_blank">Article Summary 3</a>
+        </div>
+    </div>
+
+    <!-- Progress Reports button with NO dropdown -->
+    <a href="#">Progress Reports</a>
+
+    <!-- Experimental Design (still has dropdown to PDF) -->
+    <div class="dropdown">
+        <button class="dropdown-btn">Experimental Design ▼</button>
+        <div class="dropdown-content">
+            <a href="Experimental Design.pdf" target="_blank">Experimental Design</a>
+        </div>
+    </div>
+
+    <!-- Media button with NO dropdown -->
+    <a href="#">Media</a>
+
+    <!-- Deliverables button with NO dropdown -->
+    <a href="#">Deliverables</a>
+
+    <!-- About Us still normal dropdown -->
+    <div class="dropdown">
+        <button class="dropdown-btn">About Us ▼</button>
+        <div class="dropdown-content">
+            <a href="#">Team Members</a>
+            <a href="#">Contact Info</a>
+        </div>
+    </div>
+</div>
+
+<!-- Header -->
+<header>
+    <h1>ARtPUT: Autonomous Rover to Pick Up Trash</h1>
+    <p>Explore summaries, progress updates, results, and team info.</p>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <h2>Welcome to ARtPUT</h2>
+    <p>
+        ARtPUT is a robotics project focused on autonomous trash collection in public parks and outdoor spaces. 
+        Our goal is to improve environmental cleanliness and reduce the need for human labor in hazardous or repetitive cleanup tasks.
+    </p>
+</div>
+
+<footer>
+    © 2025 ARtPUT
+</footer>
+
+</body>
+</html>
