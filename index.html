@@ -1,269 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARtPUT: Autonomous Rover to Pick Up Trash</title>
-    <style>
-        :root {
-            --primary: #2a9d8f;
-            --secondary: #264653;
-            --accent: #e9c46a;
-            --light: #f4f9f9;
-            --white: #ffffff;
-            --text-dark: #222;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARtPUT: Autonomous Rover to Pick Up Trash</title>
+  <style>
+    :root {
+      --primary: #2a9d8f;
+      --secondary: #264653;
+      --accent: #e9c46a;
+      --light: #f4f9f9;
+      --white: #ffffff;
+      --text-dark: #222;
+    }
 
-        body {
-            margin: 0;
-            font-family: "Poppins", "Segoe UI", sans-serif;
-            background: var(--light);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
+    body {
+      margin: 0;
+      font-family: "Poppins", "Segoe UI", sans-serif;
+      background: var(--light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
 
-        /* NAVBAR */
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--secondary);
-            padding: 0.75rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--secondary);
+      padding: 0.75rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
 
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
 
-        .logo {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--accent);
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: 0.3s;
-        }
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: 0.3s;
+    }
 
-        .logo:hover {
-            color: var(--primary);
-        }
+    .logo:hover {
+      color: var(--primary);
+    }
 
-        .dropdown, .nav-item {
-            position: relative;
-        }
+    .dropdown,
+    .nav-item {
+      position: relative;
+    }
 
-        .dropdown-btn, .nav-item a {
-            color: var(--white);
-            text-decoration: none;
-            padding: 10px 14px;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: background 0.3s, color 0.3s;
-        }
+    .dropdown-btn,
+    .nav-item a {
+      color: var(--white);
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.3s, color 0.3s;
+      cursor: pointer;
+      display: inline-block;
+    }
 
-        .dropdown-btn:hover, .nav-item a:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
+    .dropdown-btn:hover,
+    .nav-item a:hover,
+    .dropdown:focus-within .dropdown-btn {
+      background: var(--primary);
+      color: var(--white);
+    }
 
-        /* DROPDOWN MENU */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: var(--white);
-            min-width: 220px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-            top: 45px;
-            animation: fadeIn 0.25s ease-in-out;
-        }
+    /* DROPDOWN MENU */
+    .dropdown-content {
+      position: absolute;
+      background: var(--white);
+      min-width: 220px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+      top: 45px;
+      left: 0;
+      display: none;
+      flex-direction: column;
+      z-index: 99;
+    }
 
-        .dropdown-content a {
-            color: var(--secondary);
-            padding: 12px 16px;
-            display: block;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
+    .dropdown-content a {
+      color: var(--secondary);
+      padding: 12px 16px;
+      display: block;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
 
-        .dropdown-content a:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
+    .dropdown-content a:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+    /* Fix: dropdown stays open when hovered OR focused */
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
+      display: flex;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        /* HERO SECTION */
-        header {
-            background: linear-gradient(120deg, #2a9d8f, #48cae4);
-            color: var(--white);
-            text-align: center;
-            padding: 90px 20px 80px;
-        }
+    /* HERO SECTION */
+    header {
+      background: linear-gradient(120deg, #2a9d8f, #48cae4);
+      color: var(--white);
+      text-align: center;
+      padding: 90px 20px 80px;
+    }
 
-        header h1 {
-            font-size: 42px;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
+    header h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
 
-        header p {
-            font-size: 18px;
-            max-width: 750px;
-            margin: 0 auto;
-            opacity: 0.95;
-        }
+    header p {
+      font-size: 18px;
+      max-width: 750px;
+      margin: 0 auto;
+      opacity: 0.95;
+    }
 
-        /* MAIN CONTENT */
-        .container {
-            max-width: 900px;
-            margin: 70px auto;
-            background: var(--white);
-            padding: 60px 50px;
-            border-radius: 20px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.07);
-            text-align: center;
-        }
+    /* MAIN CONTENT */
+    .container {
+      max-width: 900px;
+      margin: 70px auto;
+      background: var(--white);
+      padding: 60px 50px;
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+      text-align: center;
+    }
 
-        .container h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: var(--secondary);
-        }
+    .container h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: var(--secondary);
+    }
 
-        .container p {
-            font-size: 17px;
-            color: #444;
-        }
+    .container p {
+      font-size: 17px;
+      color: #444;
+    }
 
-        /* BUTTON STYLE (for future use) */
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 20px;
-            background: var(--primary);
-            color: var(--white);
-            border-radius: 8px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
 
-        .btn:hover {
-            background: var(--accent);
-            color: var(--secondary);
-        }
+    .btn:hover {
+      background: var(--accent);
+      color: var(--secondary);
+    }
 
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: var(--secondary);
-            color: var(--white);
-            margin-top: 100px;
-            font-size: 15px;
-        }
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: var(--secondary);
+      color: var(--white);
+      margin-top: 100px;
+      font-size: 15px;
+    }
 
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
-            margin-left: 6px;
-        }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-left: 6px;
+    }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
+    footer a:hover {
+      text-decoration: underline;
+    }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 1rem;
-            }
-            .nav-left {
-                flex-direction: column;
-                align-items: flex-start;
-                width: 100%;
-                gap: 1rem;
-            }
-            header h1 {
-                font-size: 32px;
-            }
-        }
-    </style>
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+      }
+      .nav-left {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 1rem;
+      }
+      header h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar">
-    <div class="nav-left">
-        <a class="logo" href="#">ARtPUT</a>
+  <div class="nav-left">
+    <a class="logo" href="#">ARtPUT</a>
 
-        <div class="dropdown">
-            <span class="dropdown-btn">Article Summaries ▼</span>
-            <div class="dropdown-content">
-                <a href="pdfs/Article%20Summary%201.pdf" target="_blank">Article Summary 1</a>
-                <a href="pdfs/Article%20Summary%202.pdf" target="_blank">Article Summary 2</a>
-                <a href="pdfs/Article%20Summary%203.pdf" target="_blank">Article Summary 3</a>
-            </div>
-        </div>
-
-        <div class="nav-item"><a href="#">Progress Reports</a></div>
-
-        <div class="dropdown">
-            <span class="dropdown-btn">Experimental Design ▼</span>
-            <div class="dropdown-content">
-                <a href="pdfs/Experimental%20Design.pdf" target="_blank">Experimental Design</a>
-            </div>
-        </div>
-
-        <div class="nav-item"><a href="#">Media</a></div>
-        <div class="nav-item"><a href="#">Deliverables</a></div>
-
-        <div class="dropdown">
-            <span class="dropdown-btn">About Us ▼</span>
-            <div class="dropdown-content">
-                <a href="#">Team Members</a>
-                <a href="#">Contact Info</a>
-            </div>
-        </div>
+    <div class="dropdown" tabindex="0">
+      <span class="dropdown-btn">Article Summaries ▼</span>
+      <div class="dropdown-content">
+        <a href="pdfs/Article%20Summary%201.pdf" target="_blank">Article Summary 1</a>
+        <a href="pdfs/Article%20Summary%202.pdf" target="_blank">Article Summary 2</a>
+        <a href="pdfs/Article%20Summary%203.pdf" target="_blank">Article Summary 3</a>
+      </div>
     </div>
+
+    <div class="nav-item"><a href="#">Progress Reports</a></div>
+
+    <div class="dropdown" tabindex="0">
+      <span class="dropdown-btn">Experimental Design ▼</span>
+      <div class="dropdown-content">
+        <a href="pdfs/Experimental%20Design.pdf" target="_blank">Experimental Design</a>
+      </div>
+    </div>
+
+    <div class="nav-item"><a href="#">Media</a></div>
+    <div class="nav-item"><a href="#">Deliverables</a></div>
+
+    <div class="dropdown" tabindex="0">
+      <span class="dropdown-btn">About Us ▼</span>
+      <div class="dropdown-content">
+        <a href="#">Team Members</a>
+        <a href="#">Contact Info</a>
+      </div>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO SECTION -->
 <header>
-    <h1>ARtPUT: Autonomous Rover to Pick Up Trash</h1>
-    <p>Building a sustainable future through automation — an autonomous rover designed to clean our planet, one piece of trash at a time.</p>
+  <h1>ARtPUT: Autonomous Rover to Pick Up Trash</h1>
+  <p>
+    Building a sustainable future through automation — an autonomous rover designed to clean our planet, one piece of trash at a time.
+  </p>
 </header>
 
 <!-- MAIN CONTENT -->
 <div class="container">
-    <h2>Welcome to ARtPUT</h2>
-    <p>
-        ARtPUT is a robotics initiative committed to leveraging autonomous technology to improve environmental cleanliness. 
-        Our rover detects, collects, and removes trash in outdoor spaces, showcasing how engineering can make a meaningful ecological impact.
-    </p>
-    <a href="pdfs/Experimental%20Design.pdf" class="btn" target="_blank">View Experimental Design</a>
+  <h2>Welcome to ARtPUT</h2>
+  <p>
+    ARtPUT is a robotics initiative committed to leveraging autonomous technology to improve environmental cleanliness. 
+    Our rover detects, collects, and removes trash in outdoor spaces, showcasing how engineering can make a meaningful ecological impact.
+  </p>
+  <a href="pdfs/Experimental%20Design.pdf" class="btn" target="_blank">View Experimental Design</a>
 </div>
 
 <!-- FOOTER -->
 <footer>
-    © 2025 ARtPUT — Autonomous Rover to Pick Up Trash |
-    <a href="https://github.com/YOUR_USERNAME/ARtPUT-Website" target="_blank">View on GitHub</a>
+  © 2025 ARtPUT — Autonomous Rover to Pick Up Trash |
+  <a href="https://github.com/YOUR_USERNAME/ARtPUT-Website" target="_blank">View on GitHub</a>
 </footer>
 
 </body>
