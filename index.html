@@ -107,7 +107,6 @@
       color: var(--white);
     }
 
-    /* Fix: dropdown stays open when hovered OR focused */
     .dropdown:hover .dropdown-content,
     .dropdown:focus-within .dropdown-content {
       display: flex;
@@ -259,13 +258,6 @@
     </div>
 
     <div class="dropdown" tabindex="0">
-      <span class="dropdown-btn">Research Poster ▼</span>
-      <div class="dropdown-content">
-        <a href="pdfs/ARtPUT_Poster.pdf" target="_blank">Research Poster</a>
-      </div>
-    </div>
-
-    <div class="dropdown" tabindex="0">
       <span class="dropdown-btn">Media ▼</span>
       <div class="dropdown-content">
         <a href="photos.html">Photos</a>
@@ -273,7 +265,12 @@
       </div>
     </div>
 
-    <div class="nav-item"><a href="#">Deliverables</a></div>
+    <div class="dropdown" tabindex="0">
+      <span class="dropdown-btn">Deliverables ▼</span>
+      <div class="dropdown-content">
+        <a href="pdfs/ARtPUT_Poster.pdf" target="_blank">Research Poster</a>
+      </div>
+    </div>
 
     <div class="dropdown" tabindex="0">
       <span class="dropdown-btn">About Us ▼</span>
